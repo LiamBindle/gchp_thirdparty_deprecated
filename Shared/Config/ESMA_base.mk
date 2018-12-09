@@ -200,7 +200,7 @@ DEF_SDF += $(D)H5_HAVE_PARALLEL
 #DEF_SDF += $(D)NETCDF_NEED_NF_MPIIO
 #------------------------------------------------------------------------------
 
-DIR_ESMF := $(ESMF_DIR)/../install
+DIR_ESMF := $(ESMF_DIR)/../esmf_install
 INC_ESMF := $(DIR_ESMF)/include/ 
 MOD_ESMF := $(DIR_ESMF)/mod/
 LIB_ESMF := $(DIR_ESMF)/lib/libesmf.so
