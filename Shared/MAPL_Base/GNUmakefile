@@ -99,19 +99,43 @@ CODE :=  allgather.code           bcast.code             recv.code      \
          arrayscatter.code        read_parallel.code     sendrecv.code\
          allreducemin.code        allreducemax.code      allreducesum.code
 
-SRCS :=  ESMFL_Mod.P90            MAPL_HeapMod.F90       MAPL_VarSpecMod.F90\
-         MAPL_Base.F90            MAPL_InterpMod.F90     hinterp.F\
-         MAPL_CFIO.F90            MAPL_IO.P90            MAPL_HorzTransform.F90\
-         MAPL_Comms.P90           MAPL_LocStreamMod.F90  MAPL_Mod.F90\
-         MAPL_Constants.F90       MAPL_Profiler.F90      sort.c\
-         MAPL_GenericCplComp.F90  MAPL_Sort.F90\
-         MAPL_Generic.F90         MAPL_sun_uc.P90        MAPL_SatVapor.F90\
-         MAPL_HistoryGridComp.F90 MAPL_Cap.F90           hash.c\
+SRCS :=  ESMFL_Mod.P90\
+         MAPL_HeapMod.F90\
+         MAPL_VarSpecMod.F90\
+         MAPL_Base.F90\
+         MAPL_InterpMod.F90\
+         hinterp.F\
+         MAPL_IO.P90\
+         MAPL_HorzTransform.F90\
+         MAPL_Comms.P90\
+         MAPL_LocStreamMod.F90\
+         MAPL_Constants.F90\
+         MAPL_Profiler.F90\
+         sort.c\
+         MAPL_sun_uc.P90\
+         MAPL_GenericCplComp.F90\
+         MAPL_Sort.F90\
+         MAPL_Generic.F90\
+         MAPL_SatVapor.F90\
+         hash.c\
          c_mapl_locstream_F.c\
-         memuse.c                 MAPL_MemUtils.F90      MAPL_Hash.F90 \
-         CubeToLatLon.F90         MAPL_MaxMinMod.F90     MAPL_SimpleBundleMod.F90 \
-         MAPL_OrbGridCompMod.F90  MAPL_NominalOrbitsMod.F90 MAPL_ExtDataGridCompMod.F90 \
-         MAPL_NewArthParser.F90   MAPL_ShmemMod.F90      MAPL_LoadBalance.F90 MAPL_CFIOServer.F90
+         memuse.c\
+         MAPL_MemUtils.F90\
+         MAPL_Hash.F90\
+         CubeToLatLon.F90\
+         MAPL_MaxMinMod.F90\
+         MAPL_NominalOrbitsMod.F90\
+         MAPL_NewArthParser.F90\
+         MAPL_ShmemMod.F90\
+         MAPL_LoadBalance.F90\
+         MAPL_CFIOServer.F90\
+         MAPL_CFIO.F90\
+         MAPL_ExtDataGridCompMod.F90\
+         MAPL_SimpleBundleMod.F90\
+         MAPL_HistoryGridComp.F90\
+         MAPL_Cap.F90\
+         MAPL_Mod.F90\
+         MAPL_OrbGridCompMod.F90
 
 SRC_STUBS :=  MAPL_stubs.F90
 
