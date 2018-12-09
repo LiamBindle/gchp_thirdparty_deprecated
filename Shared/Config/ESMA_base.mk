@@ -301,7 +301,7 @@ FREAL4      =
 ifeq ("$(ESMF_COMPILER)","intel")
   FREAL8      = -r8
   FREE        =
-  CPPANSIX    = -ansi -DANSI_CPP 
+  CPPANSIX    = -std=gnu11 -nostdinc -CC # -ansi -DANSI_CPP 
 else ifeq ("$(ESMF_COMPILER)","gfortran")
   FREAL8      = -fdefault-real-8 -fdefault-double-8
   FREE        = -ffree-form -ffree-line-length-none -Wno-line-truncation -fno-range-check
@@ -364,9 +364,9 @@ LDFLAGS = $(LDPATH) $(USER_LDFLAGS)
 	$(ESMA_TIMER) $(FC) -c $(F90FLAGS) $<
 
 .P90.o:
-	@sed -e "/\!.*'/s/'//g" $< | $(CPP) $(CPPANSIX) $(FPPFLAGS) > $*___.f90
+	sed -e "/\!.*'/s/'//g" $< | $(CPP) $(CPPANSIX) $(FPPFLAGS) > $*___.f90
 	$(ESMA_TIMER) $(FC) -c $(f90FLAGS) -o $*.o $*___.f90
-	@$(RM) $*___.f90
+	$(RM) $*___.f90
 
 .H.h:
 	$(FPP) $(FPPFLAGS) $*.H > $*.h
@@ -377,32 +377,32 @@ LDFLAGS = $(LDPATH) $(USER_LDFLAGS)
 	$(RM) $*.F90
 
 .c.d:
-	@$(PERL) $(FDP) $(FDP_FLAGS) -c $<
+	$(PERL) $(FDP) $(FDP_FLAGS) -c $<
 
 .f.d:
-	@$(PERL) $(FDP) $(FDP_FLAGS) -c $<
+	$(PERL) $(FDP) $(FDP_FLAGS) -c $<
 
 .F.d:
-	-@$(CPP) $(FPPFLAGS) $< > $*___.f
-	@$(PERL) $(FDP) -i $< $(FDP_FLAGS) -c $*___.f
-	@$(RM) $*___.f
+	-$(CPP) $(FPPFLAGS) $< > $*___.f
+	$(PERL) $(FDP) -i $< $(FDP_FLAGS) -c $*___.f
+	$(RM) $*___.f
 
 .f90.d:
-	@$(PERL) $(FDP) $(FDP_FLAGS) -c $<
+	$(PERL) $(FDP) $(FDP_FLAGS) -c $<
 
 .F90.d:
-	-@$(CPP) $(FPPFLAGS) $< > $*___.f90
-	@$(PERL) $(FDP) -i $< $(FDP_FLAGS) -c $*___.f90
-	@$(RM) $*___.f90
+	-$(CPP) $(FPPFLAGS) $< > $*___.f90
+	$(PERL) $(FDP) -i $< $(FDP_FLAGS) -c $*___.f90
+	$(RM) $*___.f90
 
 .P90.d:
-	@$(PERL) $(FDP) -i $< $(FDP_FLAGS) -c $<
+	$(PERL) $(FDP) -i $< $(FDP_FLAGS) -c $<
 
 .m4.d:
 	$(M4) $(M4FLAGS) $*.m4 > $*___.F90
-	-@$(FPP) $(FPPFLAGS) $*___.F90 > $*___.f90
-	@$(PERL) $(FDP) -i $< $(FDP_FLAGS) -c $*___.f90
-	@$(RM) $*___.f90 $*___.F90
+	-$(FPP) $(FPPFLAGS) $*___.F90 > $*___.f90
+	$(PERL) $(FDP) -i $< $(FDP_FLAGS) -c $*___.f90
+	$(RM) $*___.f90 $*___.F90
 
 
 %___.lst : %.F90
