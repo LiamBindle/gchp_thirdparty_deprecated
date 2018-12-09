@@ -1,13 +1,17 @@
 #!/bin/bash
-export ESMF_DIR=$(pwd)/ESMF
-export ESMF_BOPT=O
-export ESMF_COMPILER=gfortran
-export ESMF_COMM=openmpi
-export ESMF_OS=Linux
 
-export ESMF_INSTALL_PREFIX=$(pwd)/install
+source environment.rc
 export ESMF_INSTALL_LIBDIR=lib
 export ESMF_INSTALL_BINDIR=bin
 export ESMF_INSTALL_DOCDIR=doc
 export ESMF_INSTALL_HEADERDIR=include
 export ESMF_INSTALL_MODDIR=include
+
+if [ ! -f install/esmf.install ]; then
+	cd $ESMF_DIR && make --no-print-directory && make --no-print-directory install && touch install/esmf.install && cd ..
+fi
+
+# Build and install FVDycore
+if [ ! -f install/fvdycore.install ]; then
+	cd $FV_DIR && make --no-print-directory install && touch install fvdycore.install && cd ..
+fi

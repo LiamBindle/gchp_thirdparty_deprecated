@@ -151,11 +151,11 @@ LIB_SYS =
 #
 # Always assume we are using netCDF-4.  Take the include & link
 # directory paths as computed from the Makefile_header.mk.
-INC_NETCDF :=$(GC_INCLUDE)
-ifdef GC_F_INCLUDE
-   INC_NETCDF +=$(GC_F_INCLUDE)
-endif
-LIB_NETCDF :=$(NCL)
+INC_NETCDF :=$(shell nc-config --includedir) $(shell nf-config --includedir)
+# ifdef GC_F_INCLUDE
+#    INC_NETCDF +=$(GC_F_INCLUDE)
+# endif
+LIB_NETCDF :=$(shell nc-config --flibs)
 #------------------------------------------------------------------------------
 
 ###############################################################################
@@ -200,10 +200,10 @@ DEF_SDF += $(D)H5_HAVE_PARALLEL
 #DEF_SDF += $(D)NETCDF_NEED_NF_MPIIO
 #------------------------------------------------------------------------------
 
-DIR_ESMF := $(ESMF_DIR)
-INC_ESMF := $(DIR_ESMF)/$(ARCH)/include/ 
-MOD_ESMF := $(DIR_ESMF)/$(ARCH)/mod/
-LIB_ESMF := $(DIR_ESMF)/$(ARCH)/lib/libesmf.so
+DIR_ESMF := $(ESMF_DIR)/../install
+INC_ESMF := $(DIR_ESMF)/include/ 
+MOD_ESMF := $(DIR_ESMF)/mod/
+LIB_ESMF := $(DIR_ESMF)/lib/libesmf.so
 
 ###############################################################################
 # %%%%% COMMENTED OUT BY BOB Y. (11/20/14) %%%%%
