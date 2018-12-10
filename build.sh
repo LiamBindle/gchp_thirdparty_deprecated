@@ -36,3 +36,10 @@ if [ ! -f mapl.install ]; then
 	cd ..
 fi
 
+# Build FVdycore
+if [ ! -f fvdycore.install ]; then
+	cd $FV_DIR
+	make --no-print-directory esma_install 
+	touch fvdycore.install 
+	cd ..
+fi
