@@ -19,6 +19,8 @@ do
 	cp $includes pkg/include
 done
 
+cp $REG_DIR/*.h pkg/include
+
 cd pkg
 tar -czvf ../gchp-thirdparty.tar.gz .
 cd ..
